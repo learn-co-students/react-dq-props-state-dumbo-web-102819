@@ -25,19 +25,21 @@ export default class BabyHog extends Component {
     })
   }
 
-  // eyeChoice = (color) => {
-  //   if (color === 'blue') {
-  //     return BlueBaby
-  //   }
-  //   else if (color === 'glowing') {
-  //     return GlowingBaby
-  //   }
-  //   else if (color === 'sun'){
-  //     return SunBaby
-  //   }
-  // }
+  eyeChoice = (color) => {
+    if (color === 'blue') {
+      return BlueBaby
+    }
+    else if (color === 'glowing') {
+      return GlowingBaby
+    }
+    else if (color === 'sun'){
+      return SunBaby
+    }
+  }
 
-  eyeChoice = (color) => {console.log(color.charAt(0).toUpperCase() + color.slice(1) + 'Baby')}
+  // eyeChoice = (color) => {(color.charAt(0).toUpperCase() + color.slice(1) + 'Baby')}
+
+  // eyeChoice = (color) => {return `./assets/${color}-eyes.png`}
 
   render() {
     return (
