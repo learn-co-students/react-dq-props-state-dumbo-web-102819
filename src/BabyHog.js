@@ -39,7 +39,7 @@ export default class BabyHog extends Component {
 
   // eyeChoice = (color) => {(color.charAt(0).toUpperCase() + color.slice(1) + 'Baby')}
 
-  // eyeChoice = (color) => {return `./assets/${color}-eyes.png`}
+  eyeChoice = (color) => {`./assets/${color}-eyes.png`}
 
   render() {
     return (
