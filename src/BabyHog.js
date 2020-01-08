@@ -17,13 +17,33 @@ export default class BabyHog extends Component {
     }
   }
 
-  changeWeight = (e) => {
+    changeWeight = (e) => {
     // nothing needs to change here
     const newWeight = e.target.name === "+" ? (this.state.weight + 10) : (this.state.weight - 10)
     this.setState({
       weight: newWeight
     })
   }
+
+    colorImg= (color) =>{
+        if (color === 'blue') {
+          return  <div className="hb-wrap">
+                  <img src={BlueBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+                  </div>
+         
+          
+        } 
+        else if(color === 'sun'){
+          return <div className="hb-wrap">
+                 <img src={SunBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+                 </div>
+        }
+        else {
+          return <div className="hb-wrap">
+                 <img src={GlowingBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+                 </div>
+        }
+    }
 
   render() {
     
@@ -41,9 +61,8 @@ export default class BabyHog extends Component {
           Decrease Weight
         </Button>
 
-        <div className="hb-wrap">
-          <img src={normalBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
-        </div>
+          
+        {this.colorImg(this.props.eyeColor)}
         
       </li>
     )
