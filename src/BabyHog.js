@@ -14,6 +14,10 @@ export default class BabyHog extends Component {
     super(props)
   }
 
+  state = {
+    weight: 10
+  }
+
   changeWeight = (e) => {
     // nothing needs to change here
     const newWeight = e.target.name === "+" ? (this.state.weight + 10) : (this.state.weight - 10)
@@ -22,23 +26,39 @@ export default class BabyHog extends Component {
     })
   }
 
+  getImg = () => {
+    switch (this.props.eyeColor){
+      case "blue":
+        return BlueBaby
+        break;
+      case "sun":
+        return SunBaby
+        break;
+      case "glowing":
+        return GlowingBaby
+        break;
+      default:
+        return normalBaby
+    }
+  }
+
   render() {
     return (
       <li className="hogbabies">
-        <h1>Name</h1>
-        <h3>Weight:</h3>
-        <h3>Hobby:</h3>
-        <h4>Eye Color:</h4>
+        <h1>{this.props.name}</h1>
+        <h3>Weight:{this.state.weight}</h3>
+        <h3>Hobby:{this.props.hobby}</h3>
+        <h4>Eye Color:{this.props.eyeColor}</h4>
           
-        <Button name="+">
+        <Button onClick={this.changeWeight} name="+">
           Increase Weight
         </Button>
-        <Button name="-">
+        <Button onClick={this.changeWeight} name="-">
           Decrease Weight
         </Button>
 
         <div className="hb-wrap">
-          <img src={normalBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+          <img src={this.getImg()} style={{height: '200px'}} alt="MasterBlasterJrJr" />
         </div>
         
       </li>
