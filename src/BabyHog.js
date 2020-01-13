@@ -12,9 +12,12 @@ export default class BabyHog extends Component {
 
   constructor(props) {
     super(props)
+    this.state={
+      weight: 0
+    }
   }
 
-  changeWeight = (e) => {
+    changeWeight = (e) => {
     // nothing needs to change here
     const newWeight = e.target.name === "+" ? (this.state.weight + 10) : (this.state.weight - 10)
     this.setState({
@@ -22,24 +25,44 @@ export default class BabyHog extends Component {
     })
   }
 
+    colorImg= (color) =>{
+        if (color === 'blue') {
+          return  <div className="hb-wrap">
+                  <img src={BlueBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+                  </div>
+         
+          
+        } 
+        else if(color === 'sun'){
+          return <div className="hb-wrap">
+                 <img src={SunBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+                 </div>
+        }
+        else {
+          return <div className="hb-wrap">
+                 <img src={GlowingBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+                 </div>
+        }
+    }
+
   render() {
+    
     return (
       <li className="hogbabies">
-        <h1>Name</h1>
-        <h3>Weight:</h3>
-        <h3>Hobby:</h3>
-        <h4>Eye Color:</h4>
+        <h1>Name: {this.props.name}</h1>
+        <h3>Weight: {this.state.weight}</h3>
+        <h3>Hobby: {this.props.hobby}</h3>
+        <h4>Eye Color: {this.props.eyeColor}</h4>
           
-        <Button name="+">
+        <Button onClick={this.changeWeight} name="+">
           Increase Weight
         </Button>
-        <Button name="-">
+        <Button onClick={this.changeWeight} name="-">
           Decrease Weight
         </Button>
 
-        <div className="hb-wrap">
-          <img src={normalBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
-        </div>
+          
+        {this.colorImg(this.props.eyeColor)}
         
       </li>
     )
